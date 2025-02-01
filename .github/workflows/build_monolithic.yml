@@ -28,12 +28,12 @@ jobs:
       CROSS_OVER_LOCAL_FILE: crossover-24.0.6
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       ############ Restore MoltenVK / DXVK from cache ##############
 
       - name: Restore MoltenVK / DXVK from cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache_moltenVK_DXVK
         with:
           path: ${{ env.INSTALLROOT }}/${{ env.MOLTENVK_DXVK_INSTALLATION }}
@@ -65,7 +65,7 @@ jobs:
           popd
 
       - name: Upload MoltenVK / DXVK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.MOLTENVK_DXVK_INSTALLATION }}
           path: ${{ env.INSTALLROOT }}/${{ env.MOLTENVK_DXVK_INSTALLATION }}.tar.gz
@@ -272,7 +272,7 @@ jobs:
           popd
 
       - name: Upload Wine
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.WINE_INSTALLATION }}
           path: ${{ env.INSTALLROOT }}/${{ env.WINE_INSTALLATION }}.tar.gz
@@ -294,13 +294,13 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run build_local.sh
         run: ./build_local.sh
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: artifacts-build_local-wine-cx${{ matrix.CROSS_OVER_VERSION }}
           path: ${{ env.PACKAGE_UPLOAD }}
